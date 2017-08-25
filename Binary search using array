@@ -1,0 +1,24 @@
+package module1;
+
+import java.util.Arrays;
+
+public class arryas {
+
+	public static void main(String a[]){
+		int a1[]={80,20,90,70,30,10};
+		System.out.println();
+		Arrays.sort(a1);
+		System.out.println("------------Array List after sorting");
+		for(int x:a1){
+			System.out.print(x+",");
+		}
+		System.out.println("-----Binary Search operation using arrays--------");
+		System.out.println(Arrays.binarySearch(a1, 20));//1
+		System.out.println(Arrays.binarySearch(a1, 10));//0
+		System.out.println(Arrays.binarySearch(a1, 80));//4
+		System.out.println(Arrays.binarySearch(a1, 60));//-4
+		System.out.println(Arrays.binarySearch(a1, 40));//-4
+		System.out.println(Arrays.binarySearch(a1, 50));//-4
+		System.out.println(Arrays.binarySearch(a1, 1000));//-7
+	}
+}
