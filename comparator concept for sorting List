@@ -1,0 +1,45 @@
+package module1;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class collect {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> list=new ArrayList<Integer>();
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		list.add(80);
+		list.add(70);
+		list.add(90);
+		
+		System.out.println("*********Before sort List*******");
+		System.out.println(list);
+		System.out.println("*********After reverse List*******");
+		Collections.reverse(list);
+		System.out.println(list);
+		Collections.sort(list,new myComparator());
+		System.out.println("*********After sort List*******");
+		System.out.println(list);
+				
+		 // create comparator for reverse order
+		 // create comparator for reverse order
+		   @SuppressWarnings({ "unchecked", "rawtypes" })
+		Comparator cmp = Collections.reverseOrder(new myComparator() );  
+
+		   // sort the list
+		   Collections.sort(list, cmp); 
+				  
+		   System.out.println("List sorted in ReverseOrder:"+ list); 
+	
+	}
+
+}
