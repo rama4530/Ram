@@ -1,0 +1,28 @@
+package module1;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class demoonArrayList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str[]={"A","C","E","B","Z","F","a","U","K"};
+		List i= Arrays.asList(str);
+		System.out.println("------Converting arrays to List------------");
+		System.out.println(i);
+		str[0]="L";
+		System.out.println("------Replacing the 0th position using arrays------------");
+		System.out.println(i);
+		System.out.println("------Replacing the 0th position using List reference------------");
+		i.set(2,"N");
+		System.out.println(i);
+		System.out.println("------Trying to increase the array size using list------------");
+		i.add("Y"); // java.lang.UnsupportedOperationException
+		System.out.println("------Trying to remove value from the array using list------------");
+		i.remove(5); // java.lang.UnsupportedOperationException
+		System.out.println("------Trying to replace the value in array with heterogenious value------------");
+		i.set(5, new Integer(20));  //java.lang.ArrayStoreException:
+	}
+
+}
