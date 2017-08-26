@@ -1,0 +1,27 @@
+package module1;
+
+public class student {
+	String name;
+	public static student s1;
+	String id;
+	public String toString(){
+		String str=s1.name;
+		printID(s1.id);
+		return str;
+	}
+	public String printID(String id){
+		System.out.println(id);
+		return id;
+	}
+	student(String name,String id){
+		this.name=name;	
+		this.id=id;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		s1=new student("123", "RK");
+		System.out.println(s1);
+	}
+
+}
+
