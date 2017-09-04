@@ -1,0 +1,59 @@
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class DemoOnWindowHandles {
+
+	private WebDriver driver=null;
+	@Test
+	public void testcase1() throws InterruptedException{
+		System.setProperty("webdriver.chrome.driver","I:\\chromedriver_win32\\chromedriver.exe");
+		driver=new ChromeDriver();
+		driver.get("https://www.google.com/gmail/about/");
+		Thread.sleep(1000);
+		driver.findElement(By.linkText("CREATE AN ACCOUNT")).click();
+		String parent_handle=driver.getWindowHandle();
+		Set<String> str=driver.getWindowHandles();
+		Iterator<String> stringIterator=str.iterator();
+
+		while(stringIterator.hasNext()){
+			String child_handle=stringIterator.next();
+			if(!parent_handle.equalsIgnoreCase(child_handle)){
+				driver.switchTo().window(child_handle);
+				System.out.println("Navigating second window");
+			}
+		}
+		driver.findElement(By.linkText("Learn more")).click();
+		String parent1=driver.getWindowHandle();
+		System.out.println(parent1);
+		Set<String> set=driver.getWindowHandles();
+		Iterator<String> set_it=set.iterator();
+		while(set_it.hasNext()){
+			String child_1=set_it.next();
+			//System.out.println(child_1);
+			if(!parent1.equalsIgnoreCase(child_1)){
+				driver.switchTo().window(child_1);
+				System.out.println("Navigating third window");
+				Thread.sleep(5000);
+				System.out.println(driver.getTitle());
+				String title="Why Google asks for your information when you create an account - Google Account Help";
+				if(title.equalsIgnoreCase(driver.getTitle())){
+					driver.close();	
+				}
+			}
+		}
+		driver.switchTo().window(parent1);
+		Thread.sleep(2000);
+		System.out.println(driver.getTitle());
+		driver.close();
+		Thread.sleep(2000);
+		driver.switchTo().window(parent_handle);
+		System.out.println(driver.getTitle());
+		driver.quit();
+	}
+
+}
